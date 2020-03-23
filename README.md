@@ -96,8 +96,8 @@ const element = createCustomElement(AppComponent, { injector: this.injector }) a
 ```
 
 createCustomElement is function from @angular/elements that takes the component, and the injector (for providing every thing that the component and it children might need)
-and returns an element (sort of HTMLElement, there is a little issue with the type here, so we need to cast it to any)
-now element is our new born web component, now we need to give him a name and tell the world!
+and returns an element (sort of HTMLElement, there is a little issue with the type here, so we need to cast it to any)  
+element is our new born web component, we need to give him a name and tell the world!
 
 ```js
 customElements.define('elm-bullshit-root', element);
