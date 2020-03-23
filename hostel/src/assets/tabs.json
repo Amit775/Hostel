@@ -1,0 +1,50 @@
+[
+	{
+		"type": "tab",
+		"application": "bullshit",
+		"display": "בלבולי שכל",
+		"icon": "home",
+		"element": "elm-bullshit-root",
+		"src": "assets/elements/bullfssdshit/main-es2015.js"
+	},
+	{
+		"type": "tab",
+		"application": "bullshit",
+		"display": "שינויים במתכוון",
+		"icon": "check",
+		"element": "elm-bullshit-root",
+		"src": "assets/elements/bullshit/main-es2015.js"
+	},
+	{
+		"type": "tab",
+		"application": "bullshit",
+		"display": "שבירת קרח",
+		"icon": "clear",
+		"element": "elm-bullshit-root",
+		"src": "assets/elements/bullshit/main-es2015.js"
+	},
+	{
+		"type": "tab",
+		"application": "bullshit",
+		"display": "שלגון",
+		"icon": "face",
+		"element": "elm-bullshit-root",
+		"src": "assets/elements/bullshit/main-es2015.js"
+	},
+	{
+		"type": "tab",
+		"application": "bullshit",
+		"display": "מידעון נוסף",
+		"icon": "book",
+		"element": "elm-bullshit-root",
+		"src": "assets/elements/bullshit/main-es2015.js"
+	},
+	{
+		"type": "tab",
+		"application": "bullshit",
+		"display": "צימר בצפון",
+		"icon": "note",
+		"element": "elm-bullshit-root",
+		"src": "assets/elements/bullshit/main-es2015.js"
+	}
+]

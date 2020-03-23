@@ -1,0 +1,14 @@
+<div class="content">
+	<mat-tab-group backgroundColor="warn">
+		<mat-tab *ngFor="let tab of tabs$ | async">
+			<ng-template matTabLabel>
+				<mat-icon> {{ tab.icon }} </mat-icon>
+				<div class="label-text"> {{ tab.display }} </div>
+			</ng-template>
+
+			<ng-template matTabContent class="host" #host>
+				<ax-lazy-element *axLazyElementDynamic="tab.element, url: tab.src"></ax-lazy-element>
+			</ng-template>
+		</mat-tab>
+	</mat-tab-group>
+</div>
