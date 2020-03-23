@@ -1,7 +1,7 @@
 # Hostel (HostElement)
 
 ## brief
-An alternative application to Orchestra, based on web components instead of iframes. With the same functionality (and maybe more) but less complicated.
+An application that can host other applications as Angular Elements and provide them some services. Some of the applications can be a tab, but also as panel, top-bar, mission manager (my-desktop) and so on.
 
 ## Web Component
 
