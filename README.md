@@ -7,15 +7,15 @@ An application that can host other applications as Angular Elements and provide 
 
 >Web Components is a suite of different technologies allowing you to create reusable custom elements — with their functionality encapsulated away from the rest of your code — and utilize them in your web apps. [docs](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
 
-	In simple words, web component is the abbility to compile every component from every framework into a js file, and use these components in any other application. By simply importing the js file, and use the pre-defined tag of the component.
+In simple words, web component is the abbility to compile every component from every framework into a js file, and use these components in any other application. By simply importing the js file, and use the pre-defined tag of the component.
 
 ### Angular Element
-	It's a library of angular that take an NgModule and compile it into a web component. If the module is AppModule (the root module of the application) - the whole application becomes a web component! 
+It's a library of angular that take an NgModule and compile it into a web component. If the module is AppModule (the root module of the application) - the whole application becomes a web component! 
 
-	Before the explanation of 'How to do it', some background, feel free to skip.
+Before the explanation of 'How to do it', some background, feel free to skip.
 
 #### bootstrap
-	Bootstrap is the entry point of our application, we know about two places in our application we've seen this function.
+Bootstrap is the entry point of our application, we know about two places in our application we've seen this function.
 	 
 * main.ts  
 ```js
@@ -37,15 +37,15 @@ export class AppModule { }
 the boostrapModule() read the components in the bootsrap array, and call to `appRef.Bootstrap(AppComponent)`. now, after AppComponent is bootsraped, the browser know what to do when he see \<app-root> and our application can run.
 
 #### Dependency Injection
-	This issue is complicated, all I know it's the basics use cases, but we can do a lot of usefull things with that mechanism. Some points about it.
+This issue is complicated, all I know it's the basics use cases, but we can do a lot of usefull things with that mechanism. Some points about it.
 * It's everywhere  
 	every component, module, directive, service, application. platform (let's call them angular entities :-)) have an injected injector that we can use if we inject it into the constructor.  `constructor(private injector: Injector) { }`
 
 * It's hirarchical  
 	actually, the injector is not the same one for all angular entities. every instance of an entity has it's own injector. but the DI mechanism is hirarchical - means, if a component want to use some service, the DI check if it's own injector have that service, if not it checks in the parent injector etc. until the root component (or the platform!).
 
-* It's easy  
-	The main usage we do with the DI is to inject services (we can inject almost everything!). When we create a service, we set the property `providedIn` that means the level of the injector in the hirarchy that the service will be available at.
+* It's accssesible  
+	The main usage we do with the DI is to inject services (we can inject almost everything!). When we create a service, we set the property `providedIn` that means the level of the injector in the hirarchy that the service will be available at.   
 		1. `'any'` - the service will be available in any injector - means that it's not singleton! every injector will create new instance of the service.  
 		2. `'root'` - the most common option. The service will be available in the injector of the root component, which means that every component will get the instance created in the root injector, so 2 components that under the same root will use the same instance of that service (singleton)  
 		3. `'platform'` - since angular 9. remember the main.ts file?  
