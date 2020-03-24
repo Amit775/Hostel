@@ -10,12 +10,12 @@ An application that can host other applications as Angular Elements and provide 
 In simple words, web component is the abbility to compile every component from every framework into a js file, and use these components in any other application. By simply importing the js file, and use the pre-defined tag of the component.
 
 ### Angular Element
-It's a library of angular that take an NgModule and compile it into a web component. If the module is AppModule (the root module of the application) - the whole application becomes a web component! 
+It's a library oFf angular that take a component and compile it into a web component. If the component is AppComponent (the root component of the application) - the whole application becomes a web component! 
 
 Before the explanation of 'How to do it', some background, feel free to skip.
 
 #### bootstrap
-Bootstrap is the entry point of our application, we know about two places in our application we've seen this function.
+Bootstrap is the entry point of our application, there are two places in angular application that bootstrap proccess is arriving.
 	 
 * main.ts  
 ```js
@@ -23,7 +23,7 @@ platformBrowserDynamic()
  -> .bootstrapModule(AppModule)
  	.catch(err => console.error(err));
 ```  
-This method is a method of PlatformRef (that returns from platformBrowserDynamic()) that indicates to the platform (in our case - the browser) that AppModule is the entry point to our application - the root component (\<app-root> which exist in index.html) is declared in that module.
+This is a method of PlatformRef (that returns from platformBrowserDynamic()) that indicates to the platform (in our case - the browser) that AppModule is the entry point to our application - the root component (\<app-root> which exist in index.html) is declared in that module.
 * app.module.ts
 ```js
 @NgModule({
@@ -42,7 +42,7 @@ This issue is complicated, all I know it's the basics use cases, but we can do a
 	every component, module, directive, service, application. platform (let's call them angular entities :-)) have an injected injector that we can use if we inject it into the constructor.  `constructor(private injector: Injector) { }`
 
 * It's hirarchical  
-	actually, the injector is not the same one for all angular entities. every instance of an entity has it's own injector. but the DI mechanism is hirarchical - means, if a component want to use some service, the DI check if it's own injector have that service, if not it checks in the parent injector etc. until the root component (or the platform!).
+	actually, the injector is not the same one for all angular entities. every instance of an entity has it's own injector. but the DI mechanism is hirarchical - means, if a component want to use some service, the DI check if the component's injector have that service, if not it checks in the parent injector etc. until the root component (or the platform!).
 
 * It's accssesible  
 	The main usage we do with the DI is to inject services (we can inject almost everything!). When we create a service, we set the property `providedIn` that means the level of the injector in the hirarchy that the service will be available at.   
@@ -54,7 +54,7 @@ This issue is complicated, all I know it's the basics use cases, but we can do a
 	.bootstrapModule(AppModule)
 	.catch(err => console.error(err));
 	```
-	this function create an PlatformRef, which have it own injector, higher then the root injector. But why we need an injector of component that not exist in our component tree - not under our root component? becuase there are components that we use them in our application, that they are root components by themselves - web components! (or angular elements)
+	this function create an PlatformRef, which have it own injector, higher then the root injector. But why we need an injector of component that not exist in our component tree - not under our root component? becuase there are components we use in our application, that they are root components by themselves - web components! (or angular elements)
 
 ### How to do it (with long explanations - summary is later)
 so after all this bullshit, lets make some angular elements  
@@ -68,7 +68,7 @@ first we need to install two libraries  :
 now we need to edit our application, let's say that we want to compile our AppComponent into web component. we need to prevent from angular to bootstrap this component. 
 
 in module.app.ts
-1. remove AppComponent from the bootstrap array (usually the array sould be empty, if there is another component there, it's mean that there is another root component in the app and it should be web component two)
+1. remove AppComponent from the bootstrap array (usually at this point the array should be empty, if there is another component, it's mean that there is another root component in the app and it probably should be web component too)
 
 2. add this code to the class AppModule
 ```js
@@ -95,9 +95,9 @@ and where the magic happens!
 const element = createCustomElement(AppComponent, { injector: this.injector }) as any;
 ```
 
-createCustomElement is function from @angular/elements that takes the component, and the injector (for providing every thing that the component and it children might need)
-and returns an element (sort of HTMLElement, there is a little issue with the type here, so we need to cast it to any)  
-element is our new born web component, we need to give him a name and tell the world!
+createCustomElement is function from `@angular/elements` that takes the component, and the injector (for providing every thing that the component and it children might need)
+and returns an element (sort of HTMLElement, there is a little issue with the type here, so we need to cast it to any).    
+`element` is our new born web component, we need to give him a name and tell the world!
 
 ```js
 customElements.define('elm-bullshit-root', element);
@@ -106,7 +106,7 @@ customElements.define('elm-bullshit-root', element);
 
 we need to build and we done! for that, we first run  
 `ng g ngx-build-plus:externals`  
-add an extra webpack configuration so if there are many angular elements, they all use the same libraries and not every element will import its own (prevent duplications)
+add an extra webpack configuration so if there are many angular elements, they all use the same libraries and not every element will import its own (prevent duplications). P.S. it's important point for our use case, and need a deeply thoughts.
 
 now we build - not with ng build but with ngx-build-plus  
 `npm run ngx-build-plus:externals`  
@@ -133,8 +133,8 @@ in dist/\<projectName>/ there is an index.html that contains
 </body>
 ```
 
-here i have every file twice, one for es5 and one for es2015, but if we don't care about Explorer we can use only the es2015. 
-so my point is, if we import these files, we can use the tag \<elm-bullshit-root> as known html element!
+I have every file twice, one for es5 and one for es2015, but if we don't care about Explorer we can use only the es2015. 
+so my point is, if we import these files, we can use the tag \<elm-bullshit-root> as a known html element!
 
 
 
