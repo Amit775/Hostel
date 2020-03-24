@@ -109,7 +109,9 @@ we need to build and we done! for that, we first run
 add an extra webpack configuration so if there are many angular elements, they all use the same libraries and not every element will import its own (prevent duplications). P.S. it's important point for our use case, and need a deeply thoughts.
 
 now we build - not with ng build but with ngx-build-plus  
-`npm run ngx-build-plus:externals`  
+`npm run build:externals`  
+if there are more than one project, and the project we want to build isn't the default  
+`npm run build:<projectName>:externals`
 
 when it's done we will have 3 files  
 	1. `scripts.js` - contain all the angular framework   
@@ -149,7 +151,7 @@ P.S. in the code I only imported `scripts.js` and `polyfill.js` because I load t
 * implements `ngDoBootstrap` in AppModule
 * create an element using `const elm = createCustomElement(AppComponent, { injector })`
 * define the element using `customElement.define('custom-element, elm)`
-* build using `npm run ngx-build-plus:externals`
+* build using `npm run build:externals`
 * coping the js files from dist/*.js to your application (in asstets for example)
 * add `<script src="assets/*.js">` for each js file
 * use your \<custom-element>\</custom-element>!
