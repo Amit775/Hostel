@@ -136,6 +136,8 @@ in dist/\<projectName>/ there is an index.html that contains
 I have every file twice, one for es5 and one for es2015, but if we don't care about Explorer we can use only the es2015. 
 so my point is, if we import these files, we can use the tag \<elm-bullshit-root> as a known html element!
 
+P.S. in the code I only imported `scripts.js` and `polyfill.js` because I load the `main.js` dynamically with a library called `@angular-extension/elements` 
+
 
 
 ### Summary
