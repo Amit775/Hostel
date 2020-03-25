@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 
 export interface MenuItem {
@@ -12,40 +12,32 @@ export interface MenuItem {
 	templateUrl: './top-bar.component.html',
 	styleUrls: ['./top-bar.component.less']
 })
-export class TopBarComponent implements OnInit {
+export class TopBarComponent {
 
+	constructor() { }
 	title = 'בלבולי שכל';
 
 	menu: MenuItem[] = [
 		{
 			icon: 'info',
 			label: 'מידע',
-			action: () => console.log('info')
+			action: () => console.log('info', 'בלבולי שכל')
 		},
 		{
 			icon: 'warning',
 			label: 'אזהרה',
-			action: () => console.log('warning')
+			action: () => console.warn('warning', 'בלבולי שכל')
 		},
 		{
 			icon: 'error',
 			label: 'שגיאה',
-			action: () => console.log('error')
+			action: () => console.error('error', 'בלבולי שכל')
 		},
 		{
 			icon: 'check',
 			label: 'הצלחה',
-			action: () => console.log('success')
+			action: () => console.log('success', 'בלבולי שכל')
 		}
 	];
-
-	constructor() { }
-
-
-
-	ngOnInit(): void {
-	}
-
-
 
 }

@@ -1,9 +1,8 @@
 import { Observable } from 'rxjs';
 
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { TabManagerService } from './core/tab-manager.service';
-import { ToasterService } from './core/toaster.service';
 import { TabElement } from './shared/models/tab-item.interface';
 
 
@@ -15,15 +14,12 @@ import { TabElement } from './shared/models/tab-item.interface';
 export class AppComponent implements OnInit {
 	public tabs$: Observable<TabElement[]>;
 
-	@ViewChild('host', { read: ViewContainerRef })
-	host: ViewContainerRef;
-
 	constructor(
-		private tabManager: TabManagerService,
-		private toaster: ToasterService
+		private tabManager: TabManagerService
 	) { }
 
 	ngOnInit() {
+
 		this.tabs$ = this.tabManager.loadTabs();
 	}
 }

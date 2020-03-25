@@ -7,7 +7,7 @@ import { TabElement } from '../shared/models/tab-item.interface';
 
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'platform'
 })
 export class TabManagerService {
 

@@ -1,6 +1,9 @@
+import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component, OnInit } from '@angular/core';
 
-import { data } from './data';
+import { DynamicDataItemNode } from './dynamic-data-node';
+import { DynamicDataSource } from './dynamic-data-source';
+import { DynamicDatabaseService } from './dynamic-database.service';
 
 
 @Component({
@@ -10,21 +13,22 @@ import { data } from './data';
 })
 export class TreeComponent implements OnInit {
 
-	treeControl: FlatTreeControl<DynamicFlatNode>;
+	treeControl: FlatTreeControl<DynamicDataItemNode>;
 	dataSource: DynamicDataSource;
 
-	constructor(private database: DynamicDatabase) { }
+	constructor(private database: DynamicDatabaseService) { }
 
 	ngOnInit() {
-		this.treeControl = new FlatTreeControl<DynamicFlatNode>(this.getLevel, this.isExpandable);
+		this.database.initializeMap();
+		this.treeControl = new FlatTreeControl<DynamicDataItemNode>(this.getLevel, this.isExpandable);
 		this.dataSource = new DynamicDataSource(this.treeControl, this.database);
 
 		this.dataSource.data = this.database.initialData();
 	}
 
-	getLevel = (node: DynamicFlatNode) => node.level;
+	getLevel = (node: DynamicDataItemNode) => node.level;
 
-	isExpandable = (node: DynamicFlatNode) => node.expandable;
+	isExpandable = (node: DynamicDataItemNode) => node.expandable;
 
-	hasChild = (_: number, _nodeData: DynamicFlatNode) => _nodeData.expandable;
+	hasChild = (_: number, node: DynamicDataItemNode) => node.expandable;
 }

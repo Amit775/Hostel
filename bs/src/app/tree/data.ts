@@ -38,18 +38,13 @@ export class IdService {
 }
 const idManager = new IdService();
 
-export interface Base {
+export interface Item {
 	id: string;
 	display: string;
+	children?: Item[];
 }
 
-export interface Folder extends Base {
-	children: Item[];
-}
-
-export type Item = Base | Folder;
-
-export const data: Item[] = [
+export const externalData: Item[] = [
 	{
 		id: idManager.generate(),
 		display: randString()
@@ -112,7 +107,7 @@ export const data: Item[] = [
 		{
 			id: idManager.generate(),
 			display: randString(),
-			children: [	{
+			children: [{
 				id: idManager.generate(),
 				display: randString()
 			},
@@ -182,9 +177,10 @@ export const data: Item[] = [
 
 
 function randString(): string {
-	const letters = 'abcdefghijklmnopqrstuvwkyzABCDEFGHIJKLMNOPQRSTUVWKYZ';
+	const letters = 'אבגדהוזחטיכלמנסעפצקרשת';
 	const result: string[] = [];
-	for (let index = 0; index < 5; index++) {
+	for (let index = 0; index < 16; index++) {
+		if (index % 4 === 0 && index !== 0) result.push(' ');
 		const rand = Math.floor(Math.random() * letters.length);
 		result.push(letters[rand]);
 	}

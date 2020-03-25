@@ -6,7 +6,6 @@
 	align-items: flex-start !important;
 	padding: 5px 24px !important;
 	border-width: 0 1px !important;
-    border-color: #fbb4af !important;
     border-style: dashed !important;
 
 	& .mat-tab-label-content {
@@ -17,27 +16,16 @@
 ::ng-deep .mat-tab-body-wrapper {
 	max-height: calc(100vh - 72px);
 	min-height: calc(100vh - 72px);
-	direction: ltr;
 
 	.mat-tab-body-content {
 		overflow: unset;
 	}
 }
 
-::ng-deep .mat-tab-header {
-	direction: ltr;
-}
-
-::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
-	background-color: #fbb4af;
-	height: 3px;
-}
-
-
 .content {
     width: 400px;
     height: 100%;
-    border-left: 1px solid #F44336;
+    border-left: 1px solid;
 }
 
 .label-text {

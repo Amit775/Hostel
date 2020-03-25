@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ErrorComponent } from './error/error.component';
 import { LoadingComponent } from './loading/loading.component';
 import { SharedModule } from './shared/shared.module';
 
@@ -12,7 +11,6 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
 	declarations: [
 		AppComponent,
-		ErrorComponent,
 		LoadingComponent
 	],
 	imports: [
@@ -21,7 +19,7 @@ import { SharedModule } from './shared/shared.module';
 		SharedModule,
 		LazyElementsModule.forRoot({
 			rootOptions: {
-				errorComponent: ErrorComponent,
+				// errorComponent: ErrorComponent,
 				loadingComponent: LoadingComponent,
 				isModule: true
 			}
@@ -31,4 +29,5 @@ import { SharedModule } from './shared/shared.module';
 	bootstrap: [AppComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {
+}
