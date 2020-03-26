@@ -5,46 +5,46 @@
 		"display": "בלבולי שכל",
 		"icon": "home",
 		"element": "elm-bullshit-root",
-		"src": "assets/elements/bullfssdshit/main-es2015.js"
+		"src": "assets/elements/bullshit/main-es2015.js"
 	},
 	{
 		"type": "tab",
-		"application": "bullshit",
+		"application": "changes",
 		"display": "שינויים במתכוון",
 		"icon": "check",
-		"element": "elm-bullshit-root",
-		"src": "assets/elements/bullshit/main-es2015.js"
+		"element": "elm-changes-root",
+		"src": "assets/elements/changes/main-es2015.js"
 	},
 	{
 		"type": "tab",
-		"application": "bullshit",
+		"application": "ice-braker",
 		"display": "שבירת קרח",
 		"icon": "clear",
-		"element": "elm-bullshit-root",
-		"src": "assets/elements/bullshit/main-es2015.js"
+		"element": "elm-ice-braker-root",
+		"src": "assets/elements/ice-braker/main-es2015.js"
 	},
 	{
 		"type": "tab",
-		"application": "bullshit",
+		"application": "popsicle",
 		"display": "שלגון",
 		"icon": "face",
-		"element": "elm-bullshit-root",
-		"src": "assets/elements/bullshit/main-es2015.js"
+		"element": "elm-popsicle-root",
+		"src": "assets/elements/popsicle/main-es2015.js"
 	},
 	{
 		"type": "tab",
-		"application": "bullshit",
+		"application": "extra-info",
 		"display": "מידעון נוסף",
 		"icon": "book",
-		"element": "elm-bullshit-root",
-		"src": "assets/elements/bullshit/main-es2015.js"
+		"element": "elm-extra-info-root",
+		"src": "assets/elements/extra-info/main-es2015.js"
 	},
 	{
 		"type": "tab",
-		"application": "bullshit",
+		"application": "northern-room",
 		"display": "צימר בצפון",
 		"icon": "note",
-		"element": "elm-bullshit-root",
-		"src": "assets/elements/bullshit/main-es2015.js"
+		"element": "elm-northern-room-root",
+		"src": "assets/elements/northern-room/main-es2015.js"
 	}
 ]
