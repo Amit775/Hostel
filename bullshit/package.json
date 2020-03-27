@@ -10,7 +10,7 @@
 		"e2e": "ng e2e",
 		"postinstall:bak": "",
 		"postinstall": "ngcc",
-		"build:externals": "ng build --extra-webpack-config webpack.externals.js --prod --single-bundle --plugin ~inline-source-map-plugin.js",
+		"build:externals": "ng build --extra-webpack-config webpack.externals.js --prod --single-bundle",
 		"build:bullshit:externals": "ng build --extra-webpack-config webpack.externals.js --prod --project bullshit --single-bundle"
 	},
 	"private": true,

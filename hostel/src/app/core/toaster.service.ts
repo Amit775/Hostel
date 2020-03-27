@@ -1,12 +1,8 @@
-import { Injectable } from '@angular/core';
 import {
 	MatSnackBar, MatSnackBarConfig, MatSnackBarRef, SimpleSnackBar
 } from '@angular/material/snack-bar';
 
 
-
-
-@Injectable({ providedIn: 'root' })
 export class ToasterService {
 
 	private ref: MatSnackBarRef<SimpleSnackBar>;
