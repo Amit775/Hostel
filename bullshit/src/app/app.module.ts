@@ -6,7 +6,6 @@ import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MergedInjector } from '../../../hostel/src/app/shared/merged-injector';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -33,15 +32,11 @@ export class AppModule implements DoBootstrap {
 
 	ngDoBootstrap(appRef: ApplicationRef) {
 		if (environment.production) {
-			// tslint:disable-next-line: no-string-literal
-			const hostelInjector: Injector = window['HostelInjector'];
-			const element = createCustomElement(AppComponent,
-				{ injector: new MergedInjector(this.injector, hostelInjector) }) as any;
+			const element = createCustomElement(AppComponent, { injector: this.injector }) as any;
 			customElements.define('elm-bullshit-root', element);
 			return;
 		}
 
 		appRef.bootstrap(AppComponent);
-
 	}
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { ToasterService } from '../../../../hostel/src/app/core/toaster.service';
 
 
 export interface MenuItem {
@@ -16,29 +15,29 @@ export interface MenuItem {
 })
 export class TopBarComponent {
 
-	constructor(private toaster: ToasterService) { }
+	constructor() { }
 	title = 'בלבולי שכל';
 
 	menu: MenuItem[] = [
 		{
 			icon: 'info',
 			label: 'מידע',
-			action: () => this.toaster.info('info', 'בלבולי שכל')
+			action: () => console.info('info', 'בלבולי שכל')
 		},
 		{
 			icon: 'warning',
 			label: 'אזהרה',
-			action: () => this.toaster.warn('warning', 'בלבולי שכל')
+			action: () => console.warn('warning', 'בלבולי שכל')
 		},
 		{
 			icon: 'error',
 			label: 'שגיאה',
-			action: () => this.toaster.error('error', 'בלבולי שכל')
+			action: () => console.error('error', 'בלבולי שכל')
 		},
 		{
 			icon: 'check',
 			label: 'הצלחה',
-			action: () => this.toaster.success('success', 'בלבולי שכל')
+			action: () => console.log('success', 'בלבולי שכל')
 		}
 	];
 
