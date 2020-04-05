@@ -14,11 +14,25 @@ import { TabElement } from './shared/models/tab-item.interface';
 export class AppComponent implements OnInit {
 	public tabs$: Observable<TabElement[]>;
 
+	title = 'ערך כ שהו';
+
 	constructor(
 		private tabManager: TabManagerService
 	) { }
 
 	ngOnInit() {
 		this.tabs$ = this.tabManager.loadTabs();
+
+		setTimeout(() => this.title = 'ערך מתוזמן', 3000);
 	}
+
+	out(event: CustomEvent<{ title: string }>) {
+		console.log('emitter from element');
+		console.log(event.detail);
+	}
+
+	change() {
+		this.title = 'ערך אחר';
+	}
+
 }

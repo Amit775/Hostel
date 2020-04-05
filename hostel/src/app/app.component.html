@@ -1,12 +1,12 @@
 <div class="body">
-	<mat-tab-group backgroundColor="primary" dir="rtl" class="content">
+	<mat-tab-group backgroundColor="primary" dir="rtl" class="tabs">
 		<mat-tab *ngFor="let tab of tabs$ | async">
 			<ng-template matTabLabel>
-				<mat-icon> {{ tab.icon }} </mat-icon>
+				<mat-icon [svgIcon]="tab.icon"></mat-icon>
 				<div class="label-text"> {{ tab.display }} </div>
 			</ng-template>
 
-			<ng-template matTabContent class="host" #host>
+			<ng-template matTabContent>
 				<ax-lazy-element *axLazyElementDynamic="tab.element, url: tab.src"></ax-lazy-element>
 			</ng-template>
 		</mat-tab>

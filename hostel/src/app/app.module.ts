@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error.component';
 import { LoadingComponent } from './loading/loading.component';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
+		HttpClientModule,
 		SharedModule,
 		LazyElementsModule.forRoot({
 			rootOptions: {
@@ -27,7 +29,6 @@ import { SharedModule } from './shared/shared.module';
 			}
 		})
 	],
-	providers: [],
 	bootstrap: [AppComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

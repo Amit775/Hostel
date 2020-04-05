@@ -1,0 +1,10 @@
+
+<elm-chg-top-bar [title]="title"></elm-chg-top-bar>
+<div> Change title </div>
+<mat-form-field>
+	<input matInput #input/>
+</mat-form-field>
+<div>
+
+	<button mat-stroked-button (click)="emit(input)">Change</button>
+</div>

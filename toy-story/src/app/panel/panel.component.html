@@ -1,0 +1,11 @@
+<div class="panel">
+	<mat-tab-group (selectedTabChange)="resetSelects()">
+		<mat-tab label="first">
+			<elm-ice-tab-a [optionsa]="optionsa$ | async" [optionsb]="optionsb$ | async"></elm-ice-tab-a>
+		</mat-tab>
+
+		<mat-tab label="second">
+			<elm-ice-tab-b></elm-ice-tab-b>
+		</mat-tab>
+	</mat-tab-group>
+</div>

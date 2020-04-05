@@ -1,0 +1,25 @@
+<div class="panel" cdkDrag cdkDragRootElement=".cdk-overlay-pane">
+	<div class="header">
+		<span> {{ title }} </span>
+		<span class="fill-space"></span>
+		<span class="control">
+			<button mat-icon-button *ngIf="isCloseable" (click)="close()">
+				<mat-icon>close</mat-icon>
+			</button>
+			<button mat-icon-button *ngIf="isMinimizable" (click)="toggleMinimize()">
+				<mat-icon>{{ isMinimized ? 'maximize' : 'minimize' }}</mat-icon>
+			</button>
+			<button mat-icon-button *ngIf="isMaximizable" (click)="toggleMaximize()">
+				<mat-icon>fullscreen</mat-icon>
+			</button>
+		</span>
+	</div>
+	<div class="content">
+		<ng-content></ng-content>
+	</div>
+	<div class="actions">
+		<ng-container *ngFor="let action of actions | keyvalue">
+			<button mat-raised-button (click)="action.value()"> {{ action.key }} </button>
+		</ng-container>
+	</div>
+</div>

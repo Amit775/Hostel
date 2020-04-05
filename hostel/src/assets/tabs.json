@@ -1,50 +1,38 @@
 [
 	{
-		"type": "tab",
-		"application": "bullshit",
-		"display": "בלבולי שכל",
-		"icon": "home",
-		"element": "elm-bullshit-root",
-		"src": "assets/elements/bullshit/main-es2015.js"
+		"display": "מואנה",
+		"icon": "sunset",
+		"element": "elm-moana-root",
+		"src": "assets/elements/moana/main-es2015.js"
 	},
 	{
-		"type": "tab",
-		"application": "changes",
-		"display": "שינויים במתכוון",
-		"icon": "check",
-		"element": "elm-changes-root",
-		"src": "assets/elements/changes/main-es2015.js"
+		"display": "צעצוע של סיפור",
+		"icon": "hat",
+		"element": "elm-toy-story-root",
+		"src": "assets/elements/toy-story/main-es2015.js"
 	},
 	{
-		"type": "tab",
-		"application": "ice-braker",
-		"display": "שבירת קרח",
-		"icon": "clear",
-		"element": "elm-ice-braker-root",
-		"src": "assets/elements/ice-braker/main-es2015.js"
+		"display": "מלך האריות",
+		"icon": "lion",
+		"element": "elm-lion-king-root",
+		"src": "assets/elements/lion-king/main-es2015.js"
 	},
 	{
-		"type": "tab",
-		"application": "popsicle",
-		"display": "שלגון",
-		"icon": "face",
-		"element": "elm-popsicle-root",
-		"src": "assets/elements/popsicle/main-es2015.js"
+		"display": "משפחת סופר-על",
+		"icon": "biceps",
+		"element": "elm-incredibles-root",
+		"src": "assets/elements/incredibles/main-es2015.js"
 	},
 	{
-		"type": "tab",
-		"application": "extra-info",
-		"display": "מידעון נוסף",
-		"icon": "book",
-		"element": "elm-extra-info-root",
-		"src": "assets/elements/extra-info/main-es2015.js"
+		"display": "עידן הקרח",
+		"icon": "mammoth",
+		"element": "elm-ice-age-root",
+		"src": "assets/elements/ice-age/main-es2015.js"
 	},
 	{
-		"type": "tab",
-		"application": "northern-room",
-		"display": "צימר בצפון",
-		"icon": "note",
-		"element": "elm-northern-room-root",
-		"src": "assets/elements/northern-room/main-es2015.js"
+		"display": "סיפורי נרניה",
+		"icon": "door",
+		"element": "elm-narnia-root",
+		"src": "assets/elements/narnia/main-es2015.js"
 	}
 ]

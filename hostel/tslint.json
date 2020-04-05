@@ -3,7 +3,7 @@
 	"rules": {
 		"indent": [
 			true,
-			"tab",
+			"tabs",
 			4
 		],
 		"array-type": false,
@@ -57,6 +57,7 @@
 			"timeEnd",
 			"trace"
 		],
+		"no-empty-interface": false,
 		"no-empty": false,
 		"no-inferrable-types": [
 			true,
