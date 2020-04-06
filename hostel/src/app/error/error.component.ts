@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ToasterService } from '../core/toaster.service';
+import { TabManagerService } from '../core/tab-manager.service';
 
 
 @Component({
@@ -10,9 +11,15 @@ import { ToasterService } from '../core/toaster.service';
 })
 export class ErrorComponent implements OnInit {
 
-	constructor(private toaster: ToasterService) { }
+	constructor(
+		private toaster: ToasterService,
+		private tabManager: TabManagerService
+	) { }
+
 	ngOnInit() {
-		this.toaster.error('שגיאה בטעינת הטאב', 'אפליקציה');
+		const selectedTabName = this.tabManager.currentTab?.display || '';
+		const message = `שגיאה בטעינת הטאב ${selectedTabName}`;
+		this.toaster.error(message, 'הוסטל');
 	}
 
 }

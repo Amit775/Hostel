@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { TabManagerService } from './core/tab-manager.service';
 import { TabElement } from './shared/models/tab-item.interface';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 
 @Component({
@@ -33,6 +34,10 @@ export class AppComponent implements OnInit {
 
 	change() {
 		this.title = 'ערך אחר';
+	}
+
+	changeTab(nextTab: MatTabChangeEvent) {
+		this.tabManager.changeTab(nextTab.index);
 	}
 
 }

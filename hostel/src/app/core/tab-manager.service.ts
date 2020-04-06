@@ -11,9 +11,18 @@ import { IconsService } from './icons.service';
 })
 export class TabManagerService {
 
+	private selectedTab: TabElement;
+	get currentTab() {
+		return this.selectedTab;
+	}
+
 	constructor(private icons: IconsService) { }
 	loadTabs(): Observable<TabElement[]> {
 		this.icons.registerIcons(tabs.map(x => x.icon));
 		return of(tabs);
+	}
+
+	changeTab(index: number) {
+		this.selectedTab = tabs[index];
 	}
 }

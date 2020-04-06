@@ -1,5 +1,5 @@
 <div class="body">
-	<mat-tab-group backgroundColor="primary" dir="rtl" class="tabs">
+	<mat-tab-group backgroundColor="primary" dir="rtl" class="tabs" (selectedTabChange)="changeTab($event)">
 		<mat-tab *ngFor="let tab of tabs$ | async">
 			<ng-template matTabLabel>
 				<mat-icon [svgIcon]="tab.icon"></mat-icon>
