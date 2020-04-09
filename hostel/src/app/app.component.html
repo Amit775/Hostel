@@ -5,10 +5,14 @@
 				<mat-icon [svgIcon]="tab.icon"></mat-icon>
 				<div class="label-text"> {{ tab.display }} </div>
 			</ng-template>
-
-			<ng-template matTabContent>
-				<ax-lazy-element *axLazyElementDynamic="tab.element, url: tab.src"></ax-lazy-element>
-			</ng-template>
+				<ng-template matTabContent>
+					<ng-container  *ngIf="shouldShowContent">
+						<ax-lazy-element  *axLazyElementDynamic="tab.element, url: tab.src" [state]="state$ | async"></ax-lazy-element>
+					</ng-container>
+					<ng-container *ngIf="!shouldShowContent">
+						<span class="error-message">{{ message }}</span>
+					</ng-container>
+				</ng-template>
 		</mat-tab>
 	</mat-tab-group>
 </div>

@@ -19,13 +19,13 @@
 		"directive-selector": [
 			true,
 			"attribute",
-			"elmChg",
+			"elmNarnia",
 			"camelCase"
 		],
 		"component-selector": [
 			true,
 			"element",
-			"elm-chg",
+			"elm-narnia",
 			"kebab-case"
 		],
 		"eofline": true,

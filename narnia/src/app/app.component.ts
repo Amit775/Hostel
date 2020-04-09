@@ -1,26 +1,70 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, Output, EventEmitter, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { State, Topic, User } from './shared/state.interface';
+import { StateManagerService } from './core/state-manager.service';
+import { Subscription, Observable } from 'rxjs';
+import { MatSelectChange } from '@angular/material/select';
+import { MatStepper } from '@angular/material/stepper';
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
 
 @Component({
-	selector: 'elm-chg-root',
+	selector: 'elm-narnia-root',
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.less']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
-	private subject = new Subject<string>();
+	@ViewChild('stepper') stepper: MatStepper;
 
-	@Input() title: string = 'סיפורי נרניה';
-	@Output() out = new EventEmitter<{ title: string }>();
+	@Output() stateChange = new EventEmitter<State>();
+
+	private stateSubscription: Subscription;
+
+	constructor(
+		private stateManager: StateManagerService
+	) { }
+
+	get state$(): Observable<State> {
+		return this.stateManager.state$;
+	}
 
 	ngOnInit() {
-		this.subject.subscribe({ next: t => this.title = t });
-
+		this.stateSubscription = this.stateManager.state$.subscribe({
+			next: state => this.stateChange.emit(state)
+		});
+		this.stateManager.loadUsers();
 	}
-	emit(input: HTMLInputElement) {
-		console.log('emit');
-		this.subject.next(input.value);
-		input.value = '';
 
+	ngOnDestroy() {
+		this.stateSubscription.unsubscribe();
 	}
+
+	setUser(selectedId: string): void {
+		this.stateManager.userChange(selectedId);
+		this.nextStep();
+	}
+
+	setTopic(selectedId: string) {
+		this.stateManager.topicChange(selectedId);
+		this.nextStep();
+	}
+
+	nextStep(): void {
+		this.stepper.selected.completed = true;
+		this.stepper.next();
+	}
+
+	get users$(): Observable<User[]> {
+		return this.stateManager.users$;
+	}
+	get topics$(): Observable<Topic[]> {
+		return this.stateManager.topics$;
+	}
+
+	loadUsers() {
+		this.stateManager.loadUsers();
+	}
+
+	getValue = (item: User | Topic) => item.id;
+
+	getDisplay = (item: User | Topic) => item.display;
 }

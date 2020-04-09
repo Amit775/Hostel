@@ -5,22 +5,28 @@ import { createCustomElement } from '@angular/elements';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
-import { TopBarComponent } from './top-bar/top-bar.component';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { SelectModule } from './select/select.module';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @NgModule({
 	declarations: [
-		AppComponent,
-		TopBarComponent
+		AppComponent
 	],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
 		FormsModule,
-		SharedModule
+		SharedModule,
+		SelectModule
 	],
-	providers: [],
+	providers: [
+		{
+			provide: STEPPER_GLOBAL_OPTIONS,
+			useValue: { displayDefaultIndicatorType: false }
+		}
+	],
 	bootstrap: []
 })
 export class AppModule implements DoBootstrap {

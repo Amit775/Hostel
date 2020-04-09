@@ -22,22 +22,22 @@ export class TopBarComponent {
 		{
 			icon: 'info',
 			label: 'מידע',
-			action: () => this.toaster.info('info', 'בלבולי שכל')
+			action: () => this.toaster.info('info', this.title)
 		},
 		{
 			icon: 'warning',
 			label: 'אזהרה',
-			action: () => this.toaster.warn('warning', 'בלבולי שכל')
+			action: () => this.toaster.warn('warning', this.title)
 		},
 		{
 			icon: 'error',
 			label: 'שגיאה',
-			action: () => this.toaster.error('error', 'בלבולי שכל')
+			action: () => this.toaster.error('error', this.title)
 		},
 		{
 			icon: 'check',
 			label: 'הצלחה',
-			action: () => this.toaster.success('success', 'בלבולי שכל')
+			action: () => this.toaster.success('success', this.title)
 		}
 	];
 

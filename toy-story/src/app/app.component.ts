@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PanelService } from './core/panel.service';
 import { PanelComponent } from './panel/panel.component';
 import { SOME_STRING } from './panel/tab-b/tab-b.component';
+
+import { State } from '../../../narnia/src/app/shared/state.interface';
 
 @Component({
 	selector: 'elm-ice-root',
@@ -9,6 +11,8 @@ import { SOME_STRING } from './panel/tab-b/tab-b.component';
 	styleUrls: ['./app.component.less']
 })
 export class AppComponent {
+
+	@Input() state: State;
 	title = 'toy-story';
 
 	constructor(private panel: PanelService) { }

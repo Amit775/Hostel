@@ -41,3 +41,7 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 ::-webkit-scrollbar-thumb:hover {
     background: map-get($candy-app-primary, 200)!important;
 }
+
+.error-message {
+	color: map-get($candy-app-warn, 500);
+}

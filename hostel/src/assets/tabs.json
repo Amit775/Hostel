@@ -28,11 +28,5 @@
 		"icon": "mammoth",
 		"element": "elm-ice-age-root",
 		"src": "assets/elements/ice-age/main-es2015.js"
-	},
-	{
-		"display": "סיפורי נרניה",
-		"icon": "door",
-		"element": "elm-narnia-root",
-		"src": "assets/elements/narnia/main-es2015.js"
 	}
 ]

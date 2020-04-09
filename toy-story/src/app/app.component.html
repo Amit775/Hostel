@@ -1,4 +1,5 @@
 <elm-ice-top-bar></elm-ice-top-bar>
+<div *ngIf="state"> {{ state.user.display }}: {{ state.topic.display }} - {{ state.permissions }} </div>
 <button mat-raised-button (click)="openPanel()">Open Panel</button>
 <button mat-raised-button (click)="openDialog()">Open Dialog</button>
 <button mat-raised-button (click)="openIframe()">Open Iframe</button>

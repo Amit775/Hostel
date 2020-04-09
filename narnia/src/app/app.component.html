@@ -1,10 +1,33 @@
+<mat-horizontal-stepper *ngIf="state$ | async as state" linear #stepper class="narnia">
+	<ng-template matStepperIcon="edit" let-index="index">
+		<mat-icon>{{ index === 0 ? 'person' : 'menu_book' }}</mat-icon>
+	</ng-template>
 
-<elm-chg-top-bar [title]="title"></elm-chg-top-bar>
-<div> Change title </div>
-<mat-form-field>
-	<input matInput #input/>
-</mat-form-field>
-<div>
+	<ng-template matStepperIcon="done" let-index="index">
+		<mat-icon>{{ index === 0 ? 'person' : 'menu_book' }}</mat-icon>
+	</ng-template>
 
-	<button mat-stroked-button (click)="emit(input)">Change</button>
-</div>
+	<ng-template matStepperIcon="number" let-index="index">
+		<mat-icon>{{ index === 0 ? 'person' : 'menu_book' }}</mat-icon>
+	</ng-template>
+
+	<mat-step [completed]="state.user">
+		<ng-template matStepLabel *ngIf="stepper.selectedIndex !== 0">{{ state.user?.display || 'בחירת משתמש' }}
+		</ng-template>
+		<ng-template matStepLabel *ngIf="stepper.selectedIndex === 0">
+			<elm-narnia-select label="משתמש: " [options]="users$ | async | toOption: getValue: getDisplay" [value]="state.user?.id"
+				(valueChange)="setUser($event)">
+			</elm-narnia-select>
+		</ng-template>
+	</mat-step>
+	<mat-step>
+		<ng-template matStepLabel *ngIf="stepper.selectedIndex !== 1">{{ state.topic?.display || 'בחירת נושא' }}
+		</ng-template>
+		<ng-template matStepLabel *ngIf="stepper.selectedIndex === 1">
+			<elm-narnia-select label="נושא: " [options]="topics$ | async | toOption: getValue: getDisplay" [value]="state.topic?.id"
+				(valueChange)="setTopic($event)">
+			</elm-narnia-select>
+		</ng-template>
+	</mat-step>
+	<mat-step></mat-step>
+</mat-horizontal-stepper>

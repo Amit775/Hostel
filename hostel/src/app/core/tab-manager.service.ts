@@ -17,6 +17,7 @@ export class TabManagerService {
 	}
 
 	constructor(private icons: IconsService) { }
+
 	loadTabs(): Observable<TabElement[]> {
 		this.icons.registerIcons(tabs.map(x => x.icon));
 		return of(tabs);

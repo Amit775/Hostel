@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "postinstall:bak": "",
     "postinstall": "ngcc",
-    "build:externals": "ng build --extra-webpack-config webpack.externals.js --prod --single-bundle",
+    "build:externals": "ng build --extra-webpack-config webpack.externals.js --prod --single-bundle && node deploy.js",
     "build:lion-king:externals": "ng build --extra-webpack-config webpack.externals.js --prod --project lion-king --single-bundle"
   },
   "private": true,

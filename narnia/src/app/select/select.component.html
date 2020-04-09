@@ -1,0 +1,10 @@
+<mat-form-field dir="rtl">
+	<mat-label>{{ label }}</mat-label>
+	<mat-select [value]="value" (selectionChange)="emitChange($event)">
+		<input matInput #query class="mat-option" placeholder="חיפוש..." (keydown.space)="stopPropagation($event)">
+		<cdk-virtual-scroll-viewport itemSize='42' [minBufferPx]="300" [maxBufferPx]="300">
+			<mat-option *cdkVirtualFor="let option of options | search: query.value" [value]="option.value">
+				{{ option.display }}</mat-option>
+		</cdk-virtual-scroll-viewport>
+	</mat-select>
+</mat-form-field>

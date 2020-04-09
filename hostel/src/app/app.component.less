@@ -1,4 +1,4 @@
-::ng-deep .tabs .mat-tab-label {
+:host ::ng-deep .mat-tab-label {
 	min-width: unset !important;
 	width: 72px !important;
 	height: 72px !important;
@@ -6,16 +6,17 @@
 	align-items: flex-start !important;
 	padding: 5px 10px !important;
 	border-width: 0 1px !important;
-    border-style: dashed !important;
+	border-style: dashed !important;
+	flex: auto;
 
 	& .mat-tab-label-content {
 		flex-direction: column;
 	}
 }
 
-::ng-deep .mat-tab-body-wrapper {
-	max-height: calc(100vh - 72px);
-	min-height: calc(100vh - 72px);
+:host ::ng-deep .mat-tab-body-wrapper {
+	max-height: calc(100vh - 72px - 65px);
+	min-height: calc(100vh - 72px - 65px);
 
 	.mat-tab-body-content {
 		overflow: unset;
@@ -28,9 +29,10 @@
 }
 
 .tabs {
-    width: 400px;
-    height: 100%;
-    border-left: 1px solid;
+	height: 100%;
+	width: 400px;
+	border-left: 1px solid;
+	text-align: center;
 }
 
 .label-text {
