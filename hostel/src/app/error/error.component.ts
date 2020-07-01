@@ -17,7 +17,8 @@ export class ErrorComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		const selectedTabName = this.tabManager.currentTab?.display || '';
+		// const selectedTabName = this.tabManager.currentTab?.display || '';
+		const selectedTabName = '';
 		const message = `שגיאה בטעינת הטאב ${selectedTabName}`;
 		this.toaster.error(message, 'הוסטל');
 	}

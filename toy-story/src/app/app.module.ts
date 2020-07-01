@@ -14,6 +14,7 @@ import { BasePanelComponent } from './base-panel/base-panel.component';
 import { IframePanelComponent } from './iframe-panel/iframe-panel.component';
 import { ComponentPanelComponent } from './component-panel/component-panel.component';
 import { HostDirective } from './component-panel/host.directive';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
 	declarations: [
@@ -28,12 +29,17 @@ import { HostDirective } from './component-panel/host.directive';
 		ComponentPanelComponent,
 		HostDirective
 	],
-	imports: [BrowserModule, SharedModule, BrowserAnimationsModule],
+	imports: [
+		BrowserModule,
+		SharedModule,
+		BrowserAnimationsModule,
+		RouterModule.forRoot([{ path: 'home', component: TopBarComponent }], { enableTracing: true })
+	],
 	providers: [],
 	bootstrap: []
 })
 export class AppModule implements DoBootstrap {
-	constructor(private injector: Injector) {}
+	constructor(private injector: Injector) { }
 
 	ngDoBootstrap(appRef: ApplicationRef): void {
 		if (environment.production) {

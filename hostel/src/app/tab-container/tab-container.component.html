@@ -1,0 +1,4 @@
+<ng-container *ngIf="tab$ | async as tab">
+	<ax-lazy-element *axLazyElementDynamic="tab.element, url: tab.src" [state]="state$ | async">
+	</ax-lazy-element>
+</ng-container>

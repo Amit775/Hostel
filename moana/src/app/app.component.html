@@ -1,0 +1,5 @@
+<elm-moana-top-bar>
+	<elm-moana-nav-list></elm-moana-nav-list>
+</elm-moana-top-bar>
+<div *ngIf="state"> {{ state.user.display }}: {{ state.topic.display }} - {{ state.permissions }} </div>
+<router-outlet></router-outlet>

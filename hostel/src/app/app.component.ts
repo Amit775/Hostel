@@ -1,11 +1,14 @@
 import { Observable, BehaviorSubject } from 'rxjs';
 
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { State, Permissions, EMPTY_STATE } from '../../../narnia/src/app/shared/state.interface';
 
 import { TabManagerService } from './core/tab-manager.service';
 import { TabElement } from './shared/models/tab-item.interface';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { Router, ActivatedRoute } from '@angular/router';
+import { StateService } from './core/state.service';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -14,52 +17,56 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 	styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit {
-	public tabs$: Observable<TabElement[]>;
 
-	state = new BehaviorSubject<State>(EMPTY_STATE);
-	get state$(): Observable<State> {
-		return this.state.asObservable();
+
+	get tabs(): TabElement[] {
+		return this.tabManager.tabElements;
 	}
 
-	title = 'ערך כ שהו';
+	get state$(): Observable<State> {
+		return this.stateService.state$;
+	}
+
+	get selectedTabIndex$(): Observable<number> {
+		return this.tabManager.currentTab$.pipe(map((tab: TabElement) => tab?.index || 0));
+	}
 
 	constructor(
-		private tabManager: TabManagerService
+		private tabManager: TabManagerService,
+		private stateService: StateService
 	) { }
 
 	ngOnInit() {
 		this.insertNarnia();
-		this.tabs$ = this.tabManager.loadTabs();
-	}
-
-	changeTab(nextTab: MatTabChangeEvent) {
-		this.tabManager.changeTab(nextTab.index);
+		this.tabManager.initializeTabs();
 	}
 
 	insertNarnia(): void {
 		const narnia = document.createElement('elm-narnia-root');
 		document.querySelector('.mat-tab-header').after(narnia);
-		narnia.addEventListener('stateChange', this.stateChange);
+		narnia.addEventListener('stateChange', (event: CustomEvent<State>) => this.stateChange(event));
 	}
 
-	stateChange = (event: CustomEvent<State>): void => {
-		this.state.next(event.detail);
+	stateChange(event: CustomEvent<State>): void {
+		this.stateService.updateState(event.detail);
 	}
 
 	get shouldShowContent(): boolean {
-		return this.state.value.permissions !== Permissions.NONE;
+		return this.stateService.value.permissions !== Permissions.NONE;
 	}
 
 	get message(): string {
-		if (!this.state.value.user) {
+		const { user, topic, permissions } = this.stateService.value;
+
+		if (!user) {
 			return 'נא להזדהות';
 		}
 
-		if (!this.state.value.topic) {
+		if (!topic) {
 			return 'נא לבחור נושא';
 		}
 
-		if (this.state.value.permissions === Permissions.NONE) {
+		if (permissions === Permissions.NONE) {
 			return 'חסרות הרשאות לצפייה בתוכן';
 		}
 	}

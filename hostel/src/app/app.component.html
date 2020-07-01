@@ -1,18 +1,18 @@
-<div class="body">
-	<mat-tab-group backgroundColor="primary" dir="rtl" class="tabs" (selectedTabChange)="changeTab($event)">
-		<mat-tab *ngFor="let tab of tabs$ | async">
-			<ng-template matTabLabel>
+<mat-tab-group backgroundColor="primary" dir="rtl" class="tabs" [selectedIndex]="selectedTabIndex$ | async">
+	<mat-tab *ngFor="let tab of tabs">
+		<ng-template matTabLabel>
+			<div [routerLink]="tab.route" routerLinkActive class="tab-label-container">
 				<mat-icon [svgIcon]="tab.icon"></mat-icon>
 				<div class="label-text"> {{ tab.display }} </div>
-			</ng-template>
-				<ng-template matTabContent>
-					<ng-container  *ngIf="shouldShowContent">
-						<ax-lazy-element  *axLazyElementDynamic="tab.element, url: tab.src" [state]="state$ | async"></ax-lazy-element>
-					</ng-container>
-					<ng-container *ngIf="!shouldShowContent">
-						<span class="error-message">{{ message }}</span>
-					</ng-container>
-				</ng-template>
-		</mat-tab>
-	</mat-tab-group>
-</div>
+			</div>
+		</ng-template>
+		<ng-template matTabContent>
+			<ng-container *ngIf="shouldShowContent">
+				<router-outlet></router-outlet>
+			</ng-container>
+			<ng-container *ngIf="!shouldShowContent">
+				<span class="error-message">{{ message }}</span>
+			</ng-container>
+		</ng-template>
+	</mat-tab>
+</mat-tab-group>
