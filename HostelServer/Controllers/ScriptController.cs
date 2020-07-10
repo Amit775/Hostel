@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +12,10 @@ namespace HostelServer.Controllers
 	public class ScriptController : ControllerBase
 	{
 		[HttpGet]
-		public string Get()
+		public FileResult Get(string name, bool includeMap)
 		{
-			return "Hello world";
+			string path = Path.Combine("scripts", name);
+
 		}
 	}
 }
