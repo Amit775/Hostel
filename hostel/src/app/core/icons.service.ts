@@ -10,7 +10,7 @@ export class IconsService {
 		icons.forEach(name =>
 			this.registry.addSvgIcon(
 				name,
-				this.sanitizer.bypassSecurityTrustResourceUrl(`assets/icons/${name}.svg`)
+				this.sanitizer.bypassSecurityTrustResourceUrl(`http://localhost:44395/icons/${name}.svg`)
 			)
 		);
 	}

@@ -4,41 +4,41 @@
 		"icon": "sunset",
 		"route": "moana",
 		"element": "elm-moana-root",
-		"src": "assets/elements/moana/main-es2015.js"
+		"src": "https://localhost:44395/scripts/moana/main-es2015.js"
 	},
 	{
 		"display": "צעצוע של סיפור",
 		"icon": "hat",
 		"route": "toy-story",
 		"element": "elm-toy-story-root",
-		"src": "assets/elements/toy-story/main-es2015.js"
+		"src": "https://localhost:44395/scripts/toy-story/main-es2015.js"
 	},
 	{
 		"display": "מלך האריות",
 		"icon": "lion",
 		"route": "lion-king",
 		"element": "elm-lion-king-root",
-		"src": "assets/elements/lion-king/main-es2015.js"
+		"src": "https://localhost:44395/scripts/lion-king/main-es2015.js"
 	},
 	{
 		"display": "משפחת סופר-על",
 		"icon": "biceps",
 		"route": "incredibles",
 		"element": "elm-incredibles-root",
-		"src": "assets/elements/incredibles/main-es2015.js"
+		"src": "https://localhost:44395/scripts/incredibles/main-es2015.js"
 	},
 	{
 		"display": "עידן הקרח",
 		"icon": "mammoth",
 		"route": "ice-age",
 		"element": "elm-ice-age-root",
-		"src": "assets/elements/ice-age/main-es2015.js"
+		"src": "https://localhost:44395/scripts/ice-age/main-es2015.js"
 	},
 	{
 		"display": "עידן הקרח",
 		"icon": "mammoth",
 		"route": "ice-age-2",
 		"element": "elm-ice-age-root",
-		"src": "assets/elements/ice-age/main-es2015.js"
+		"src": "https://localhost:44395/scripts/ice-age-2/main-es2015.js"
 	}
 ]
