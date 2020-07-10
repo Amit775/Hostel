@@ -42,6 +42,11 @@ export class AppComponent implements OnInit {
 	}
 
 	insertNarnia(): void {
+		const narniaScript = document.createElement('script');
+		narniaScript.src = 'assets/elements/narnia/main-es2015.js';
+		narniaScript.type = 'module';
+		narniaScript.defer = true;
+		document.body.append(narniaScript);
 		const narnia = document.createElement('elm-narnia-root');
 		document.querySelector('.mat-tab-header').after(narnia);
 		narnia.addEventListener('stateChange', (event: CustomEvent<State>) => this.stateChange(event));
@@ -70,5 +75,4 @@ export class AppComponent implements OnInit {
 			return 'חסרות הרשאות לצפייה בתוכן';
 		}
 	}
-
 }
