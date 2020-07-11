@@ -21,7 +21,7 @@ namespace HostelServer
 			return "value";
 		}
 
-		[HttpPost]
+		[HttpGet]
 		public async void PostScript([FromBody] IFormFile file)
 		{
 			string filename = file.Name;
