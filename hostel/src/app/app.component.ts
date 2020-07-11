@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
 
 	insertNarnia(): void {
 		const narniaScript = document.createElement('script');
-		narniaScript.src = 'assets/elements/narnia/main-es2015.js';
+		narniaScript.src = 'https://localhost:44395/scripts/narnia/main-es2015.js';
 		narniaScript.type = 'module';
 		narniaScript.defer = true;
 		document.body.append(narniaScript);

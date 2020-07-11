@@ -28,6 +28,13 @@ namespace HostelServer
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
+			services.AddCors(options =>
+			{
+				options.AddPolicy("CorsPolicy",
+					builder => builder.AllowAnyOrigin()
+					.AllowAnyMethod()
+					.AllowAnyHeader());
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +47,7 @@ namespace HostelServer
 
 			app.UseStaticFiles(new StaticFileOptions
 			{
+				OnPrepareResponse = context => context.Context.Response.Headers["Access-Control-Allow-Origin"] = "*",
 				FileProvider = new PhysicalFileProvider(
 					Path.Combine(env.ContentRootPath, "scripts")),
 				RequestPath = "/scripts"
@@ -49,8 +57,14 @@ namespace HostelServer
 			{
 				FileProvider = new PhysicalFileProvider(
 					Path.Combine(env.ContentRootPath, "icons")),
-				RequestPath = "/icons"
+				RequestPath = "/icons",
+				OnPrepareResponse = context =>
+				{
+					context.Context.Response.Headers["Access-Control-Allow-Origin"] = "*";
+				}
 			});
+
+			app.UseCors("CorsPolicy");
 
 			app.UseHttpsRedirection();
 
