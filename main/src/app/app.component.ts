@@ -11,8 +11,12 @@ export class AppComponent implements OnInit {
 	ngOnInit(): void {
 		const hostel = document.createElement('elm-hostel');
 		document.querySelector('.hostel').appendChild(hostel);
+		this.addScript('https://localhost:44395/scripts/hostel/main-es2015.js');
+	}
+
+	private addScript(src: string): void {
 		const script = document.createElement('script');
-		script.src = 'https://localhost:44395/scripts/hostel/main-es2015.js';
+		script.src = src;
 		script.type = 'module';
 		script.defer = true;
 		document.body.append(script);
